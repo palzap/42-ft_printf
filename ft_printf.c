@@ -3,25 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pealexan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pealexan <pealexan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 11:44:13 by pealexan          #+#    #+#             */
-/*   Updated: 2022/11/23 17:19:44 by pealexan         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:33:41 by pealexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-/*int	ft_check_flags(char c, 
-{
-	if (c == '-')
-	if (c == '0')
-	if (c == '.')
-	if (c == '#')
-	if (c == ' ')
-	if (c == '+')
-}
-*/
 int	ft_check(char c, va_list args, int *count)
 {
 	if (c == 's')
