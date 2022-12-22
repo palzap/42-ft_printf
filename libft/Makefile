@@ -3,42 +3,67 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pealexan <pealexan@student.42.fr>          +#+  +:+       +#+         #
+#    By: pealexan <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 08:46:18 by pealexan          #+#    #+#              #
-#    Updated: 2022/12/06 16:33:14 by pealexan         ###   ########.fr        #
+#    Updated: 2022/11/14 08:46:22 by pealexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= libftprintf.a
-NAMELIBFT	= libft.a
+NAME = libft.a
 
 #----------DIRS----------#
-SRCDIR = ./src/
-OBJDIR = ./objs/
-LIBFTDIR = ./libft/
-HEADERDIR = ./headers/
+HEADERDIR = ../headers/
 
-SRC = 	src/ft_printf.c \
-	src/ft_format_putaddress2.c \
-	src/ft_format_putaddress.c \
-	src/ft_format_putchar.c \
-	src/ft_format_puthexa2.c \
-	src/ft_format_puthexa.c \
-	src/ft_format_putnbr.c \
-	src/ft_format_putposnbr2.c \
-	src/ft_format_putposnbr.c \
-	src/ft_format_putstr.c \
-	src/ft_format_putunsignnbr.c \
-	src/ft_get_format.c \
-	src/ft_get_hexastr.c \
-	src/ft_printf.c \
-	src/ft_putaddress.c \
-	src/ft_putchar.c \
-	src/ft_puthexa.c \
-	src/ft_putnbr.c \
-	src/ft_putstr.c \
-	src/ft_putunsignednbr.c \
+SRC =	ft_abs.c \
+	ft_atoi.c \
+	ft_bzero.c \
+	ft_calloc.c \
+	ft_getlength.c \
+	ft_isalnum.c \
+	ft_isalpha.c \
+	ft_isascii.c \
+	ft_isdigit.c \
+	ft_isprint.c \
+	ft_isspace.c \
+	ft_itoa.c \
+	ft_utoa.c \
+	ft_lstadd_back.c \
+	ft_lstadd_front.c \
+	ft_lstclear.c \
+	ft_lstdelone.c \
+	ft_lstiter.c \
+	ft_lstlast.c \
+	ft_lstmap.c \
+	ft_lstnew.c \
+	ft_lstsize.c \
+	ft_memchr.c \
+	ft_memcmp.c \
+	ft_memcpy.c \
+	ft_memmove.c \
+	ft_memset.c \
+	ft_putchar_fd.c \
+	ft_putendl_fd.c \
+	ft_putnbr_fd.c \
+	ft_putstr_fd.c \
+	ft_split.c \
+	ft_strchr.c \
+	ft_strdup.c \
+	ft_striteri.c \
+	ft_strjoin.c \
+	ft_strlcat.c \
+	ft_strlcpy.c \
+	ft_strlen.c \
+	ft_strmapi.c \
+	ft_strncmp.c \
+	ft_strnstr.c \
+	ft_strrchr.c \
+	ft_strtrim.c \
+	ft_substr.c \
+	ft_tolower.c \
+	ft_toupper.c \
+	get_next_line.c \
+	get_next_line_multifd.c \
 
 #--------COMMANDS--------#
 CC = cc
@@ -54,18 +79,13 @@ OBJ = ${SRC:.c=.o}
 
 all: 		$(NAME)
 
-bonus: 	all
-	
 $(NAME): 	$(OBJ)
-		cd $(LIBFTDIR) && $(MAKE) && cp $(NAMELIBFT) ../$(NAME)
 		$(AR) $(NAME) $(OBJ)
 	
 clean:
 		$(RM) $(OBJ)
-		cd $(LIBFTDIR) && $(MAKE) clean
 
 fclean: 	clean
 		$(RM) $(NAME)
-		cd $(LIBFTDIR) && $(MAKE) fclean
 	
-re: fclean all
+re: 		fclean all
