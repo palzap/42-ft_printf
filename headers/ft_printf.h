@@ -54,7 +54,6 @@ int		ft_paddz1(char *hexastr, t_buffer *values, int prec, int len);
 int		ft_paddz2(char *hexastr, t_buffer *values, int len);
 int		ft_format_putnbr(t_buffer *values, long long nb);
 int		ft_format_putposnbr(t_buffer *values, unsigned long long nb);
-int		ft_print_posnbrw2(char *number, t_buffer *values, int len);
 int		ft_format_putunsignnbr(t_buffer *values, unsigned long long nb);
 char	*ft_get_hexastr(unsigned long long nb, char *base);
 int		ft_get_format_buffer(const char **str, va_list args);
