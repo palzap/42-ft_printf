@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pealexan <pealexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pealexan <pealexan@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:06:17 by pealexan          #+#    #+#             */
-/*   Updated: 2022/12/06 16:14:35 by pealexan         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:59:00 by pealexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,15 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h>
+# include <stdarg.h>
+# include <stdbool.h>
+# include <limits.h>
+# include <string.h>
 
 /*-----------------------CONVERSIONS-----------------------*/
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 char	*ft_itoa(int n);
 int		ft_abs(int n);
 int		ft_tolower(int c);
@@ -43,7 +49,11 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_isspace(int c);
+int		ft_isquote(int c);
 int		ft_getlength(unsigned long long n, int base);
+int		ft_wordcount(const char *str, char c);
+int		ft_max(int a, int b);
+int		ft_min(int a, int b);
 
 /*-------------------------STRINGS-------------------------*/
 char	**ft_split(char const *s, char c);
@@ -74,7 +84,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}t_list;
+}	t_list;
 
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);

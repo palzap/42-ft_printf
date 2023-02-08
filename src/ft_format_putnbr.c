@@ -3,110 +3,107 @@
 /*                                                        :::      ::::::::   */
 /*   ft_format_putnbr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pealexan <pealexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pealexan <pealexan@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:59:53 by pealexan          #+#    #+#             */
-/*   Updated: 2022/12/09 15:21:18 by pealexan         ###   ########.fr       */
+/*   Updated: 2023/02/08 10:36:41 by pealexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/ft_printf.h"
 
-static int	ft_print_zeroes(char *number, t_buffer *values, int precision)
+static int	ft_print_zeroes(char *number, t_buffer *v)
 {
 	int	count;
 
 	count = 0;
-	if (values->width && values->precision)
+	if (v->point && !v->prec)
+		v->w--;
+	if (!v->point && !v->prec)
 	{
-		while ((values->width--) > precision + (int)ft_strlen(number))
-			count += write(1, " ", 1);
 		count += write(1, "-", 1);
-		while ((values->precision--) > (int)ft_strlen(number))
+		while ((v->w--) > (int)ft_strlen(number))
 			count += write(1, "0", 1);
 	}
 	else
 	{
+		while ((v->w--) > ft_max((int)ft_strlen(number + 1), v->prec))
+			count += write(1, " ", 1);
 		count += write(1, "-", 1);
-		while ((values->width--) > (int)ft_strlen(number))
-			count += write(1, "0", 1);
-		while ((values->precision--) > (int)ft_strlen(number))
+	}
+	while ((v->prec--) > (int)ft_strlen(number) - 1)
+		count += write(1, "0", 1);
+	count += ft_putstr(number + 1);
+	return (count);
+}
+
+static int	ft_print_w(char *number, t_buffer *v)
+{
+	int	count;
+
+	count = 0;
+	if (!v->prec)
+	{
+		while ((v->w--) > (int)ft_strlen(number))
+			count += write(1, " ", 1);
+		count += write(1, "-", 1);
+	}
+	else
+	{
+		while ((v->w--) > ft_max((int)ft_strlen(number + 1), v->prec))
+			count += write(1, " ", 1);
+		count += write(1, "-", 1);
+		while ((v->prec--) > (int)ft_strlen(number) - 1)
 			count += write(1, "0", 1);
 	}
 	count += ft_putstr(number + 1);
 	return (count);
 }
 
-static int	ft_print_width(char *number, t_buffer *values, int precision)
+static int	ft_print_minus_w(char *number, t_buffer *v)
 {
 	int	count;
+	int	prec;
 
 	count = 0;
-	if (values->width && values->precision)
+	count += write(1, "-", 1);
+	prec = v->prec;
+	if (!v->prec)
 	{
-		while ((values->width--) > precision)
-			count += write(1, " ", 1);
-		count += write(1, "-", 1);
-		while ((values->precision--) > (int)ft_strlen(number) - 1)
-			count += write(1, "0", 1);
-	}
-	else
-	{
-		while ((values->width--) > (int)ft_strlen(number))
-			count += write(1, " ", 1);
-		count += write(1, "-", 1);
-		while ((values->precision--) > (int)ft_strlen(number) - 1)
-			count += write(1, "0", 1);
-	}
-	count += ft_putstr(number + 1);
-	return (count);
-}
-
-static int	ft_print_minus_width(char *number, t_buffer *values, int precision)
-{
-	int	count;
-
-	count = 0;
-	if (values->width && values->precision)
-	{
-		count += write(1, "-", 1);
-		while ((values->precision--) > (int)ft_strlen(number) - 1)
-			count += write(1, "0", 1);
 		count += ft_putstr(number + 1);
-		while ((values->width--) > precision)
+		while ((v->w--) > (int)ft_strlen(number))
 			count += write(1, " ", 1);
 	}
 	else
 	{
-		count += write(1, "-", 1);
-		while ((values->precision--) > (int)ft_strlen(number) - 1)
+		while ((prec--) > (int)ft_strlen(number) - 1)
 			count += write(1, "0", 1);
 		count += ft_putstr(number + 1);
-		while ((values->width--) > (int)ft_strlen(number))
+		while ((v->w--) > ft_max((int)ft_strlen(number + 1), v->prec))
 			count += write(1, " ", 1);
 	}
 	return (count);
 }
 
-int	ft_format_putnbr(t_buffer *values, long long nb)
+int	ft_format_putnbr(t_buffer *v, long long nb)
 {
 	int		count;
 	char	*number;
-	int		precision;
 
 	count = 0;
 	if (nb >= 0)
-		count += ft_format_putposnbr(values, nb);
+		count += ft_format_putposnbr(v, nb);
 	else
 	{
 		number = ft_itoa(nb);
-		precision = values->precision + 1;
-		if (values->minus)
-			count += ft_print_minus_width(number, values, precision);
-		else if (values->zero)
-			count += ft_print_zeroes(number, values, precision);
+		if (v->prec && v->w)
+			v->w--;
+		if (v->minus)
+			count += ft_print_minus_w(number, v);
+		else if (v->zero)
+			count += ft_print_zeroes(number, v);
 		else
-			count += ft_print_width(number, values, precision);
+			count += ft_print_w(number, v);
 		free(number);
 	}
 	return (count);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pealexan <pealexan@student.42.fr>          +#+  +:+       +#+         #
+#    By: pealexan <pealexan@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 08:46:18 by pealexan          #+#    #+#              #
-#    Updated: 2022/12/06 16:33:14 by pealexan         ###   ########.fr        #
+#    Updated: 2023/02/08 09:41:26 by pealexan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,9 @@ SRC = 	src/ft_printf.c \
 	src/ft_format_putaddress2.c \
 	src/ft_format_putaddress.c \
 	src/ft_format_putchar.c \
-	src/ft_format_puthexa2.c \
-	src/ft_format_puthexa.c \
+	src/ft_format_lowerhexa.c \
+	src/ft_format_upperhexa.c \
 	src/ft_format_putnbr.c \
-	src/ft_format_putposnbr2.c \
 	src/ft_format_putposnbr.c \
 	src/ft_format_putstr.c \
 	src/ft_format_putunsignnbr.c \

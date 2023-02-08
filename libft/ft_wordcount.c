@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getlength.c                                     :+:      :+:    :+:   */
+/*   ft_wordcount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pealexan <pealexan@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 12:22:13 by pealexan          #+#    #+#             */
-/*   Updated: 2023/02/02 11:57:36 by pealexan         ###   ########.fr       */
+/*   Created: 2022/11/08 14:25:44 by pealexan          #+#    #+#             */
+/*   Updated: 2023/02/02 11:59:44 by pealexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/libft.h"
 
-int	ft_getlength(unsigned long long n, int base)
+int	ft_wordcount(const char *str, char c)
 {
-	int	length;
+	int	i;
+	int	wordcount;
 
-	length = 0;
-	if (n == 0)
-		return (1);
-	while (n != 0)
+	i = 0;
+	wordcount = 0;
+	while (str[i])
 	{
-		length++;
-		n /= base;
+		while (str[i] && str[i] == c)
+			i++;
+		if (str[i])
+			wordcount++;
+		while (str[i] && str[i] != c)
+			i++;
 	}
-	return (length);
+	return (wordcount);
 }

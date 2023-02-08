@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getlength.c                                     :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pealexan <pealexan@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 12:22:13 by pealexan          #+#    #+#             */
-/*   Updated: 2023/02/02 11:57:36 by pealexan         ###   ########.fr       */
+/*   Created: 2022/11/03 14:34:43 by pealexan          #+#    #+#             */
+/*   Updated: 2023/02/02 11:56:33 by pealexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/libft.h"
 
-int	ft_getlength(unsigned long long n, int base)
+long	ft_atol(const char *str)
 {
-	int	length;
+	long	result;
+	int		sign;
 
-	length = 0;
-	if (n == 0)
-		return (1);
-	while (n != 0)
+	result = 0;
+	sign = 1;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '+' || *str == '-')
 	{
-		length++;
-		n /= base;
+		if (*str == '-')
+			sign *= -1;
+		str++;
 	}
-	return (length);
+	while (ft_isdigit(((int)*str)))
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
 }

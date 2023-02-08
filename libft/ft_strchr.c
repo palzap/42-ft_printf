@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pealexan <pealexan@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pealexan <pealexan@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:24:08 by pealexan          #+#    #+#             */
-/*   Updated: 2022/12/07 14:44:59 by pealexan         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:59:04 by pealexan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,3 @@ char	*ft_strchr(const char *str, int c)
 	}
 	return (((char *)str) + i);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int	main(void)
-{
-	printf("%s\n", strchr("teste", 1024));
-	printf("%s\n", ft_strchr("teste", 1024));
-	return (0);
-}*/

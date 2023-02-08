@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pealexan <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: pleal <pleal@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/14 08:46:18 by pealexan          #+#    #+#              #
-#    Updated: 2022/11/14 08:46:22 by pealexan         ###   ########.fr        #
+#    Updated: 2023/02/01 08:28:42 by pleal            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ HEADERDIR = ../headers/
 
 SRC =	ft_abs.c \
 	ft_atoi.c \
+	ft_atol.c \
 	ft_bzero.c \
 	ft_calloc.c \
 	ft_getlength.c \
@@ -25,9 +26,9 @@ SRC =	ft_abs.c \
 	ft_isascii.c \
 	ft_isdigit.c \
 	ft_isprint.c \
+	ft_isquote.c \
 	ft_isspace.c \
 	ft_itoa.c \
-	ft_utoa.c \
 	ft_lstadd_back.c \
 	ft_lstadd_front.c \
 	ft_lstclear.c \
@@ -37,11 +38,13 @@ SRC =	ft_abs.c \
 	ft_lstmap.c \
 	ft_lstnew.c \
 	ft_lstsize.c \
+	ft_max.c \
 	ft_memchr.c \
 	ft_memcmp.c \
 	ft_memcpy.c \
 	ft_memmove.c \
 	ft_memset.c \
+	ft_min.c \
 	ft_putchar_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
@@ -62,6 +65,8 @@ SRC =	ft_abs.c \
 	ft_substr.c \
 	ft_tolower.c \
 	ft_toupper.c \
+	ft_utoa.c \
+	ft_wordcount.c \
 	get_next_line.c \
 	get_next_line_multifd.c \
 
@@ -80,12 +85,12 @@ OBJ = ${SRC:.c=.o}
 all: 		$(NAME)
 
 $(NAME): 	$(OBJ)
-		$(AR) $(NAME) $(OBJ)
+		@$(AR) $(NAME) $(OBJ)
 	
 clean:
-		$(RM) $(OBJ)
+		@$(RM) $(OBJ)
 
 fclean: 	clean
-		$(RM) $(NAME)
+		@$(RM) $(NAME)
 	
 re: 		fclean all
