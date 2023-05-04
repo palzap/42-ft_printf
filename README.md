@@ -1,18 +1,14 @@
-ft_printf  
-Replicate printf  
+# ft_printf
 
-Started:  
-18/11/2022  
-  
-First submission:  
+The project "ft_printf" aims to recreate the functionality of the standard C library function "printf()". The task involves writing a function that takes in a format string and a variable number of arguments, formats them according to the format string, and outputs the result to the standard output stream.
+
+Through this project, I was able to gain a deeper understanding of the workings of the "printf()" function and how to handle variable arguments in C. I had to ensure that my function was able to handle a wide range of format specifiers, such as strings, characters and integers, and hexadecimal notation numbers, as well as special flags and modifiers that affect the output formatting.
+
+## Evaluation
+#### First submission
 12/12/2022  
-Score: 122%  
-  
-Second submission:  
+122%
+
+#### Second submission
 10/02/2023  
-Score: 125%  
-  
-Notes:  
-Got Moulinette error while testing precision. Will come back to this project later to try for 125%.  
-Corrected everything to take advantage of evaluation point sales. All francinette tests OK.  
-  
+125%
